@@ -27,7 +27,7 @@ export default function Hero() {
   const productY = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "18%"]
+    ["0%", "30%"]
   );
 
   const contentY = useTransform(
@@ -38,7 +38,7 @@ export default function Hero() {
 
   const contentOpacity = useTransform(
     scrollYProgress,
-    [0, 0.8],
+    [0, 0.6],
     [1, 0]
   );
 
@@ -80,7 +80,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions">
-            <a href="#product" className="btn-primary">
+            <a href="/products" className="btn-primary">
               Explore Products
               <ArrowRight size={18} />
             </a>
@@ -102,7 +102,7 @@ export default function Hero() {
           <div className="product-orbit" />
 
           <img
-            src="/images/water-meter01.jpeg"
+            src="/images/water-meter04.png"
             alt="Pinnacle smart water meter"
           />
         </motion.div>
