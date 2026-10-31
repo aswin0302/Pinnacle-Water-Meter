@@ -7,7 +7,7 @@ import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/pinnacle02/">
+    <BrowserRouter basename="/pinnacle02">
       <App />
     </BrowserRouter>
   </StrictMode>
