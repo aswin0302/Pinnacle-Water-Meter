@@ -324,7 +324,7 @@ export default function App() {
             <div className="footer-brand">
               <a href="/#home" className="footer-logo-link">
                 <img
-                  src="/images/SMART-METER-LOGO-Web.png"
+                  src={`${import.meta.env.BASE_URL}images/SMART-METER-LOGO-Web.png`}
                   alt="Pinnacle Smart Water Meter"
                   className="footer-logo"
                 />

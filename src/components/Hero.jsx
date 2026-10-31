@@ -74,24 +74,31 @@ export default function Hero() {
           </h1>
 
           <p>
-            Discover a smarter approach to water
-            measurement and management with Pinnacle
-            Smart Water Meter solutions.
+            Experience precision-engineered smart water
+            metering solutions designed to support
+            accurate measurement and smarter water
+            management.
           </p>
 
           <div className="hero-actions">
-            <a href="/products" className="btn-primary">
+            <a
+              href={`${import.meta.env.BASE_URL}products`}
+              className="btn-primary"
+            >
               Explore Products
               <ArrowRight size={18} />
             </a>
 
-            <a href="#contact" className="btn-secondary">
-              Contact Sales
+            <a
+              href="#contact"
+              className="btn-secondary"
+            >
+              Request a Quote
             </a>
           </div>
 
           <span className="hero-caption">
-            Precision · Visibility · Efficiency
+            Precision · Reliability · Smarter Decisions
           </span>
         </motion.div>
 
@@ -102,7 +109,7 @@ export default function Hero() {
           <div className="product-orbit" />
 
           <img
-            src="/images/water-meter04.png"
+            src={`${import.meta.env.BASE_URL}images/water-meter04.png`}
             alt="Pinnacle smart water meter"
           />
         </motion.div>
@@ -110,7 +117,10 @@ export default function Hero() {
 
       <div className="hero-bottom">
         <span>SMARTER WATER MANAGEMENT</span>
-        <a href="#about">Scroll to explore ↓</a>
+
+        <a href="#about">
+          Scroll to explore ↓
+        </a>
       </div>
     </section>
   );

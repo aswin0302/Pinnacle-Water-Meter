@@ -52,7 +52,7 @@ export default function Navbar() {
         onClick={closeMenu}
       >
         <img
-          src="/images/SMART-METER-LOGO-Web.png"
+          src={`${import.meta.env.BASE_URL}images/SMART-METER-LOGO-Web.png`}
           alt="Pinnacle Smart Water Meter"
           className="brand-logo"
         />
