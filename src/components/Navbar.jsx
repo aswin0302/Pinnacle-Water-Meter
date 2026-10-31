@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
@@ -27,26 +26,25 @@ export default function Navbar() {
 
     const sectionId = href.slice(2);
 
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({
-          behavior: "smooth",
-        });
-      }, 100);
-    } else {
+    const scrollToSection = () => {
       document.getElementById(sectionId)?.scrollIntoView({
         behavior: "smooth",
       });
+    };
 
-      window.history.replaceState(null, "", href);
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(scrollToSection, 300);
+    } else {
+      scrollToSection();
+      window.history.replaceState(null, "", `${location.pathname}${href.slice(1)}`);
     }
   };
 
   return (
     <header className="navbar">
       <Link
-        to="/#home"
+        to="/"
         className="brand"
         aria-label="Pinnacle Smart Water Meter Home"
         onClick={closeMenu}
@@ -69,21 +67,25 @@ export default function Navbar() {
       </button>
 
       <nav className={open ? "nav-links open" : "nav-links"}>
-        {links.map(([label, href]) => (
-          <a
-            href={href}
-            key={href}
-            onClick={(event) => {
-              if (href.startsWith("/#")) {
-                handleSectionLink(event, href);
-              } else {
-                closeMenu();
-              }
-            }}
-          >
-            {label}
-          </a>
-        ))}
+        {links.map(([label, href]) =>
+          href.startsWith("/#") ? (
+            <a
+              href={`${import.meta.env.BASE_URL}${href.slice(2)}`}
+              key={href}
+              onClick={(event) => handleSectionLink(event, href)}
+            >
+              {label}
+            </a>
+          ) : (
+            <Link
+              to={href}
+              key={href}
+              onClick={closeMenu}
+            >
+              {label}
+            </Link>
+          )
+        )}
 
         <Link
           to="/contact"
