@@ -27,7 +27,11 @@ npm ci --no-audit --no-fund
 echo "==> Building"
 npm run build
 
-if [ -n "${DEPLOY_DIR:-}" ]; then
+REPO_DIR="$(pwd -P)"
+if [ -n "${DEPLOY_DIR:-}" ] && [ "$(realpath -m "$DEPLOY_DIR")" = "$REPO_DIR" ]; then
+  echo "DEPLOY_DIR is the repo folder itself; skipping publish (rsync --delete would wipe the repo)."
+  echo "Point your web server root to $REPO_DIR/dist instead, or clone the repo elsewhere."
+elif [ -n "${DEPLOY_DIR:-}" ]; then
   echo "==> Publishing dist/ to $DEPLOY_DIR"
   mkdir -p "$DEPLOY_DIR"
   rsync -a --delete dist/ "$DEPLOY_DIR/"
