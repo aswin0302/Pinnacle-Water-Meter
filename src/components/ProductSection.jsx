@@ -53,7 +53,7 @@ export default function ProductSection() {
           </span>
 
           <motion.img
-            src="/images/water-meter01.jpeg"
+            src={`${import.meta.env.BASE_URL}images/water-meter01.jpeg`}
             alt="Pinnacle Smart Water Meter"
             className="product-image"
             animate={{ y: [0, -8, 0] }}

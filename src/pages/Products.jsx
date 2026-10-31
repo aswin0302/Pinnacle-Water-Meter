@@ -242,7 +242,7 @@ export default function Products() {
           <div className="products-hero-orbit" />
           <div className="products-hero-image-wrap">
             <img
-              src="/images/water-meter01.jpeg"
+              src={`${import.meta.env.BASE_URL}images/water-meter02.jpeg`}
               alt="Pinnacle ultrasonic smart water meter"
             />
           </div>
@@ -274,7 +274,7 @@ export default function Products() {
           >
             <div className="products-overview-image">
               <img
-                src="/images/water-meter01.jpeg"
+                src={`${import.meta.env.BASE_URL}images/water-meter01.jpeg`}
                 alt="Pinnacle Smart Water Meter product view"
               />
             </div>

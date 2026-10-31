@@ -57,7 +57,7 @@ export default function AboutPage() {
               informed water management.
             </p>
 
-            <a href="/products" className="about-primary-btn">
+            <a href={`${import.meta.env.BASE_URL}products`} className="about-primary-btn">
               Explore Our Products <ArrowRight size={18} />
             </a>
 
@@ -75,7 +75,7 @@ export default function AboutPage() {
           >
             <div className="about-image-glow" />
             <img
-              src="/images/water-meter01.jpeg"
+              src={`${import.meta.env.BASE_URL}images/water-meter01.jpeg`}
               alt="Pinnacle smart water meter"
             />
             <div className="about-image-caption">
