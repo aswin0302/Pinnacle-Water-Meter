@@ -1,0 +1,225 @@
+/* ========================================
+   UI POLISH LAYER (loaded after index.css)
+   Visual refinements, hover effects, scroll
+   reveals and accessibility. Safe to remove.
+======================================== */
+
+:root {
+  --polish-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --polish-shadow-sm: 0 2px 8px rgba(7, 28, 53, 0.06);
+  --polish-shadow-md: 0 14px 34px rgba(7, 28, 53, 0.12);
+}
+
+::selection {
+  background: rgba(22, 119, 255, 0.22);
+  color: #071c35;
+}
+
+/* Typography: balanced headings, nicer paragraph wrapping */
+h1, h2, h3 {
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Keyboard focus ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(22, 119, 255, 0.55);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Buttons: smooth press / lift feedback */
+button,
+[class*="btn"],
+[class*="-cta"],
+[class*="-submit"],
+[class*="hero-link"] {
+  transition:
+    background-color 0.25s var(--polish-ease),
+    color 0.25s var(--polish-ease),
+    border-color 0.25s var(--polish-ease),
+    box-shadow 0.25s var(--polish-ease),
+    translate 0.25s var(--polish-ease);
+}
+
+.nav-cta:hover,
+[class*="btn-primary"]:hover,
+[class*="-submit"]:not(:disabled):hover,
+.cm-submit:not(:disabled):hover {
+  translate: 0 -2px;
+  box-shadow: 0 10px 24px rgba(22, 119, 255, 0.32);
+}
+
+.nav-cta:active,
+[class*="btn"]:active,
+[class*="-submit"]:active {
+  translate: 0 0;
+  box-shadow: none;
+}
+
+/* Cards: gentle lift on hover.
+   Uses the independent `translate` property so it never
+   clashes with framer-motion's transform animations. */
+.feature-card,
+.process-card,
+.benefit-card,
+.application-card,
+.technology-card,
+.about-value-card,
+.apartment-benefit-card,
+.apartment-challenge-card,
+.apartment-feature-card,
+.apartment-step-card,
+.products-application-card,
+.products-step-card,
+.how-component-card,
+.contact-location-card,
+.hotels-benefit-item,
+.hotels-challenge-item,
+.hotels-application-item,
+.industries-benefit-item,
+.industries-application-item,
+.villas-benefit-item,
+.villas-challenge-item {
+  transition:
+    translate 0.35s var(--polish-ease),
+    box-shadow 0.35s var(--polish-ease),
+    border-color 0.35s var(--polish-ease);
+}
+
+@media (hover: hover) {
+  .feature-card:hover,
+  .process-card:hover,
+  .benefit-card:hover,
+  .application-card:hover,
+  .technology-card:hover,
+  .about-value-card:hover,
+  .apartment-benefit-card:hover,
+  .apartment-challenge-card:hover,
+  .apartment-feature-card:hover,
+  .apartment-step-card:hover,
+  .products-application-card:hover,
+  .products-step-card:hover,
+  .how-component-card:hover,
+  .contact-location-card:hover,
+  .hotels-benefit-item:hover,
+  .hotels-challenge-item:hover,
+  .hotels-application-item:hover,
+  .industries-benefit-item:hover,
+  .industries-application-item:hover,
+  .villas-benefit-item:hover,
+  .villas-challenge-item:hover {
+    translate: 0 -6px;
+    box-shadow: var(--polish-shadow-md);
+    border-color: rgba(22, 119, 255, 0.35);
+  }
+}
+
+/* FAQ accordions */
+.faq-item,
+.products-faq-item {
+  transition: box-shadow 0.3s var(--polish-ease), border-color 0.3s var(--polish-ease);
+}
+
+.faq-item:hover,
+.products-faq-item:hover {
+  box-shadow: var(--polish-shadow-sm);
+}
+
+/* Navbar links: animated underline */
+.navbar .nav-links > a:not(.nav-cta) {
+  position: relative;
+}
+
+.navbar .nav-links > a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: #1677ff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--polish-ease);
+}
+
+@media (min-width: 901px) {
+  .navbar .nav-links > a:not(.nav-cta):hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Dropdown: fade/slide in */
+.navbar .nav-dropdown-menu {
+  transition: opacity 0.2s ease, translate 0.25s var(--polish-ease);
+}
+
+/* Smooth page entrance */
+main {
+  animation: polish-page-in 0.5s var(--polish-ease) both;
+}
+
+@keyframes polish-page-in {
+  from { opacity: 0; translate: 0 10px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* Home page: CSS scroll-driven reveal for cards that are not
+   already animated by framer-motion (App.jsx / About.jsx). */
+@supports (animation-timeline: view()) {
+  .feature-card,
+  .process-card,
+  .benefit-card,
+  .application-card,
+  .technology-card {
+    animation: polish-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
+
+@keyframes polish-reveal {
+  from { opacity: 0; translate: 0 36px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* Images: smooth load, no layout jump */
+img {
+  max-width: 100%;
+}
+
+/* Mobile refinements */
+@media (max-width: 560px) {
+  h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+  h2 { font-size: clamp(1.6rem, 7vw, 2rem); }
+
+  [class*="hero-actions"] > a,
+  [class*="hero-actions"] > button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-timeline: auto !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

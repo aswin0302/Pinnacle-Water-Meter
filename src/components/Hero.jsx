@@ -68,7 +68,7 @@ export default function Hero() {
           </span>
 
           <h1>
-            Every Drop.
+            Every Drops.
             <br />
             <span>Smarter.</span>
           </h1>

@@ -22,6 +22,8 @@ import ContactPage from "./pages/ContactPage";
 import Apartments from "./pages/Apartments";  
 import Villas from "./pages/Villas";
 import Industries from "./pages/Industries";
+import Hotels from "./pages/Hotels";  
+import HowItWorks from "./pages/HowItWorks";
 
 // ========================================
 // HOME PAGE
@@ -321,6 +323,8 @@ export default function App() {
         <Route path="/apartments" element={<Apartments />} />
         <Route path="/villas" element={<Villas />} />
         <Route path="/industries" element={<Industries />} />
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
       </Routes>
 
       {/* Shared footer */}
