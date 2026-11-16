@@ -119,7 +119,7 @@ export default function Hero() {
         <span>SMARTER WATER MANAGEMENT</span>
 
         <a href="#about">
-          Scroll to explore ↓
+          Scroll to explor ↓
         </a>
       </div>
     </section>
