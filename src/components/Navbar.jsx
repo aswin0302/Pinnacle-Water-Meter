@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
+import ContactModal from "./ContactModal";
 
 const solutionLinks = [
   ["Apartments", "/apartments"],
@@ -12,6 +13,7 @@ const solutionLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const closeMenu = () => {
     setOpen(false);
@@ -90,15 +92,23 @@ export default function Navbar() {
           Contact Us
         </Link>
 
-        <Link
-          to="/contact"
+        <button
+          type="button"
           className="nav-cta"
-          onClick={closeMenu}
+          onClick={() => {
+            closeMenu();
+            setContactOpen(true);
+          }}
         >
           Get in Touch
           <ArrowUpRight size={16} />
-        </Link>
+        </button>
       </nav>
+
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+      />
     </header>
   );
 }
