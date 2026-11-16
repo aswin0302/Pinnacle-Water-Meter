@@ -274,7 +274,7 @@ export default function Products() {
           >
             <div className="products-overview-image">
               <img
-                src={`${import.meta.env.BASE_URL}images/water-meter01.jpeg`}
+                src={`${import.meta.env.BASE_URL}images/water-meter01.png`}
                 alt="Pinnacle Smart Water Meter product view"
               />
             </div>
