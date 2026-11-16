@@ -68,7 +68,7 @@ export default function Hero() {
           </span>
 
           <h1>
-            Every Drop.
+            Every Drops.
             <br />
             <span>Smarter.</span>
           </h1>
@@ -119,7 +119,7 @@ export default function Hero() {
         <span>SMARTER WATER MANAGEMENT</span>
 
         <a href="#about">
-          Scroll to explor ↓
+          Scroll to explore ↓
         </a>
       </div>
     </section>
