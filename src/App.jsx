@@ -19,6 +19,9 @@ import InfoSection from "./components/InfoSection";
 import Products from "./pages/Products";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import Apartments from "./pages/Apartments";  
+import Villas from "./pages/Villas";
+import Industries from "./pages/Industries";
 
 // ========================================
 // HOME PAGE
@@ -315,6 +318,9 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/apartments" element={<Apartments />} />
+        <Route path="/villas" element={<Villas />} />
+        <Route path="/industries" element={<Industries />} />
       </Routes>
 
       {/* Shared footer */}

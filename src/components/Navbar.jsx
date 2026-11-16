@@ -1,44 +1,21 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 
-const links = [
-  ["About", "/about"],
-  ["Products", "/products"],
-  ["How It Works", "/#how-it-works"],
-  ["Benefits", "/#benefits"],
-  ["Applications", "/#applications"],
-  ["Technology", "/#technology"],
+const solutionLinks = [
+  ["Apartments", "/apartments"],
+  ["Villas", "/villas"],
+  ["Industries", "/industries"],
+  ["Hotels", "/hotels"],
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
 
-  const closeMenu = () => setOpen(false);
-
-  const handleSectionLink = (event, href) => {
-    if (!href.startsWith("/#")) return;
-
-    event.preventDefault();
-    closeMenu();
-
-    const sectionId = href.slice(2);
-
-    const scrollToSection = () => {
-      document.getElementById(sectionId)?.scrollIntoView({
-        behavior: "smooth",
-      });
-    };
-
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(scrollToSection, 300);
-    } else {
-      scrollToSection();
-      window.history.replaceState(null, "", `${location.pathname}${href.slice(1)}`);
-    }
+  const closeMenu = () => {
+    setOpen(false);
+    setSolutionsOpen(false);
   };
 
   return (
@@ -67,25 +44,51 @@ export default function Navbar() {
       </button>
 
       <nav className={open ? "nav-links open" : "nav-links"}>
-        {links.map(([label, href]) =>
-          href.startsWith("/#") ? (
-            <a
-              href={`${import.meta.env.BASE_URL}${href.slice(2)}`}
-              key={href}
-              onClick={(event) => handleSectionLink(event, href)}
-            >
-              {label}
-            </a>
-          ) : (
-            <Link
-              to={href}
-              key={href}
-              onClick={closeMenu}
-            >
-              {label}
-            </Link>
-          )
-        )}
+        <Link to="/" onClick={closeMenu}>
+          Home
+        </Link>
+
+        <Link to="/products" onClick={closeMenu}>
+          Products
+        </Link>
+
+        <div className="nav-dropdown">
+          <button
+            type="button"
+            className="nav-dropdown-toggle"
+            aria-expanded={solutionsOpen}
+            onClick={() => setSolutionsOpen(!solutionsOpen)}
+          >
+            Solutions
+            <ChevronDown size={16} />
+          </button>
+
+          <div
+            className={
+              solutionsOpen
+                ? "nav-dropdown-menu show"
+                : "nav-dropdown-menu"
+            }
+          >
+            {solutionLinks.map(([label, href]) => (
+              <Link key={href} to={href} onClick={closeMenu}>
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <Link to="/how-it-works" onClick={closeMenu}>
+          How It Works
+        </Link>
+
+        <Link to="/about" onClick={closeMenu}>
+          About Us
+        </Link>
+
+        <Link to="/contact" onClick={closeMenu}>
+          Contact Us
+        </Link>
 
         <Link
           to="/contact"
