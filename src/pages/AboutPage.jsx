@@ -173,7 +173,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <a href="/#contact" className="about-primary-btn">
+          <a href="/contact" className="about-primary-btn">
             Contact Us <ArrowRight size={18} />
           </a>
         </div>
